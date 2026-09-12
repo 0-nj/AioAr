@@ -1,13 +1,6 @@
-# Changelog
+Changelog
 
-## 1.1.0 (2026-10-01)
+1.0.0 (2026-09-12)
 
-### What's new
+Initial public release of AioAr - DEBRID/USENET.
 
-- Improved Arabic stream sorting
-- Updated the formatter
-- Fixed duplicate labels
-
-## 1.0.0 (2026-09-12)
-
-- Initial release
