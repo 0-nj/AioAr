@@ -10,6 +10,7 @@
     "tags": [
       "p2p"
     ],
+    "services": [],
     "serviceRequired": false,
     "setToSaveInstallMenu": true,
     "inputs": [
