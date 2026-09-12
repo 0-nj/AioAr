@@ -6,6 +6,8 @@
     "source": "external",
     "author": "D",
     "version": "1.0.0",
+    "sourceUrl": "https://raw.githubusercontent.com/0-nj/AioAr/refs/heads/main/AioAr%20-%20DEBRID%3AUSENET.json",
+    "changelogUrl": "https://raw.githubusercontent.com/0-nj/AioAr/refs/heads/main/CHANGELOG.md",
     "category": "debrid",
     "tags": [
       "debrid",
