@@ -12,9 +12,27 @@
       "usenet"
     ],
     "serviceRequired": false,
-    "setToSaveInstallMenu": true
+    "setToSaveInstallMenu": true,
+    "inputs": [
+      {
+        "id": "tmdbApiKey",
+        "name": "TMDB API Key",
+        "description": "Enter your TMDB API Key.",
+        "type": "password",
+        "required": true
+      },
+      {
+        "id": "tmdbAccessToken",
+        "name": "TMDB Access Token",
+        "description": "Enter your TMDB Read Access Token.",
+        "type": "password",
+        "required": true
+      }
+    ]
   },
   "config": {
+    "tmdbApiKey": "{{inputs.tmdbApiKey}}",
+    "tmdbAccessToken": "{{inputs.tmdbAccessToken}}",
     "services": [
       {
         "id": "torbox",
