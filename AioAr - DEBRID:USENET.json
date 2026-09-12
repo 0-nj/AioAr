@@ -5,7 +5,7 @@
     "description": "تم تعديل إعدادات تمتارو وتحسينه خصيصًا لتناسب المصادر العربية، سواء من ناحية الصوت أو الترجمة، مع تحسين التصفية، وترتيب الأولويات، وآلية الانتقال إلى الخيارات البديلة عند الحاجة.",
     "source": "external",
     "author": "D",
-    "version": "1.0.1",
+    "version": "1.0.0",
     "sourceUrl": "https://raw.githubusercontent.com/0-nj/AioAr/refs/heads/main/AioAr%20-%20DEBRID%3AUSENET.json",
     "changelogUrl": "https://raw.githubusercontent.com/0-nj/AioAr/refs/heads/main/CHANGELOG.md",
     "category": "debrid",
