@@ -6,6 +6,8 @@
     "source": "external",
     "author": "D",
     "version": "1.0.0",
+    "sourceUrl": "https://raw.githubusercontent.com/0-nj/AioAr/refs/heads/main/AioAr%20-%20P2P%3AHTTP.json",
+    "changelogUrl": "https://raw.githubusercontent.com/0-nj/AioAr/refs/heads/main/CHANGELOG.md",
     "category": "p2p",
     "tags": [
       "p2p"
