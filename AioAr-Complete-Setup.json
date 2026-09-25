@@ -5,7 +5,7 @@
     "description": "تم تعديل قالب تمتارو وتحسينه ليتناسب مع المصادر العربية، عن طريق تمرير المصادر التي تحتوي على صوت عربي أو ترجمة عربية عند توفرها، مع تحسين التصفية، وترتيب الأولويات، وآلية الانتقال إلى الخيارات البديلة عند الحاجة. اختر خدماتك، ويمكنك إضافة PenguPlay اختياريًا عند اختيار وضع التورنت والويب. عند تخطي الخدمات، تُستخدم إعدادات التورنت والويب.",
     "source": "external",
     "author": "D",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "category": "AIO",
     "tags": [
       "debrid",
@@ -17,10 +17,28 @@
     "setToSaveInstallMenu": true,
     "inputs": [
       {
+        "id": "addonPreset",
+        "name": "Add-on Preset",
+        "description": "Choose the recommended add-ons (default), or keep your current add-ons with None. The recommended preset installs the add-ons included with this template. None keeps your existing add-ons, catalogs, groups, and dynamic fetching settings. For later updates, choose None if you have customized them.",
+        "type": "select",
+        "required": true,
+        "default": "default",
+        "options": [
+          {
+            "value": "default",
+            "label": "Recommended (default)"
+          },
+          {
+            "value": "none",
+            "label": "None (Use Your Current Addons)"
+          }
+        ]
+      },
+      {
         "__if": "!services",
         "id": "penguPlayUrl",
         "name": "HTTP Addons: PenguPlay",
-        "description": "Optional. Enter your PenguPlay manifest URL to include PenguPlay in the P2P/HTTP setup. Leave blank to skip it.",
+        "description": "Enter your PenguPlay manifest URL here. PenguPlay is an actively maintained HTTP addon with extensive coverage. Make an account over at [PenguPlay](https://pengu.uk/) to obtain your manifest URL. If left blank, PenguPlay will not be included in your setup.",
         "type": "url",
         "required": false
       }
@@ -28,12 +46,208 @@
   },
   "config": {
     "presets": {
-      "__switch": "services",
-      "cases": {
-        "": [
+      "__if": "inputs.addonPreset == default",
+      "__value": {
+        "__switch": "services",
+        "cases": {
+          "": [
+            {
+              "type": "stremthruTorz",
+              "instanceId": "bb9",
+              "enabled": true,
+              "options": {
+                "name": "STorz",
+                "timeout": 5000,
+                "resources": [
+                  "stream"
+                ],
+                "mediaTypes": [],
+                "includeP2P": true,
+                "useMultipleInstances": false,
+                "url": ""
+              },
+              "category": "Streams"
+            },
+            {
+              "type": "meteor",
+              "instanceId": "064",
+              "enabled": true,
+              "options": {
+                "name": "Meteor",
+                "timeout": 5000,
+                "resources": [
+                  "stream"
+                ],
+                "includeP2P": true,
+                "removeTrash": false,
+                "useMultipleInstances": false,
+                "mediaTypes": []
+              },
+              "category": "Streams"
+            },
+            {
+              "type": "comet",
+              "instanceId": "b0f",
+              "enabled": true,
+              "options": {
+                "name": "Comet",
+                "timeout": 5000,
+                "resources": [
+                  "stream"
+                ],
+                "includeP2P": true,
+                "removeTrash": false,
+                "mediaTypes": [],
+                "url": ""
+              },
+              "category": "Streams"
+            },
+            {
+              "type": "hdhub",
+              "instanceId": "29a",
+              "enabled": true,
+              "options": {
+                "name": "HdHub",
+                "timeout": 5000,
+                "resources": [
+                  "stream"
+                ],
+                "mediaTypes": [],
+                "tb_only": false
+              },
+              "category": "Streams"
+            },
+            {
+              "type": "sootio",
+              "instanceId": "9d3",
+              "enabled": true,
+              "options": {
+                "name": "Sootio",
+                "timeout": 5000,
+                "resources": [
+                  "stream"
+                ],
+                "httpProviders": [
+                  "http4khdhub",
+                  "httpHDHub4u",
+                  "httpUHDMovies",
+                  "httpMoviesDrive",
+                  "httpMKVCinemas",
+                  "httpMkvDrama",
+                  "httpMalluMv",
+                  "httpCineDoze",
+                  "httpNetflixMirror",
+                  "httpVixSrc"
+                ],
+                "mediaTypes": [],
+                "useMultipleInstances": false,
+                "url": "https://sooti.info"
+              },
+              "category": "Streams"
+            },
+            {
+              "type": "opensubtitles-v3-plus",
+              "instanceId": "262",
+              "enabled": true,
+              "options": {
+                "name": "OpenSubtitles V3+",
+                "timeout": 7500,
+                "resources": [
+                  "subtitles"
+                ],
+                "language": [
+                  "ar"
+                ],
+                "sources": "all",
+                "includeAiTranslated": false,
+                "movieHashPlusAutoAdjustment": false
+              },
+              "category": "SUBS"
+            },
+            {
+              "type": "subdl",
+              "instanceId": "4dd",
+              "enabled": true,
+              "options": {
+                "name": "SubDL",
+                "timeout": 7500,
+                "resources": [
+                  "subtitles"
+                ],
+                "language": [
+                  "AR"
+                ],
+                "hearingImpairment": "hiExclude",
+                "subDlApiKey": "<template_placeholder>"
+              },
+              "category": "SUBS"
+            },
+            {
+              "type": "subsource",
+              "instanceId": "3e8",
+              "enabled": true,
+              "options": {
+                "name": "SubSource",
+                "timeout": 7500,
+                "resources": [
+                  "subtitles"
+                ],
+                "language": [
+                  "Arabic"
+                ],
+                "subtitleTypes": [
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "hearingImpairment": "hiExclude",
+                "subSourceApiKey": "<template_placeholder>"
+              },
+              "category": "SUBS"
+            },
+            {
+              "__if": "inputs.penguPlayUrl",
+              "type": "penguplay",
+              "instanceId": "13d",
+              "enabled": true,
+              "options": {
+                "name": "PenguPlay",
+                "manifestUrl": "{{inputs.penguPlayUrl}}",
+                "timeout": 5000,
+                "resources": [
+                  "stream",
+                  "subtitles",
+                  "meta",
+                  "catalog"
+                ],
+                "mediaTypes": []
+              },
+              "category": "HTTP"
+            }
+          ]
+        },
+        "default": [
+          {
+            "type": "torznab",
+            "instanceId": "6a6",
+            "enabled": true,
+            "options": {
+              "name": "ComeTorz",
+              "timeout": 5000,
+              "mediaTypes": [],
+              "searchMode": "auto",
+              "seasonEpisodeStrategy": "dynamic",
+              "paginate": false,
+              "useMultipleInstances": false,
+              "api": {
+                "url": "https://comet.feels.legal/torznab/api"
+              }
+            }
+          },
           {
             "type": "stremthruTorz",
-            "instanceId": "bb9",
+            "instanceId": "609",
             "enabled": true,
             "options": {
               "name": "STorz",
@@ -41,89 +255,54 @@
               "resources": [
                 "stream"
               ],
+              "url": "",
               "mediaTypes": [],
-              "includeP2P": true,
-              "useMultipleInstances": false,
-              "url": ""
-            },
-            "category": "Streams"
+              "includeP2P": false,
+              "useMultipleInstances": false
+            }
           },
           {
-            "type": "meteor",
-            "instanceId": "064",
+            "type": "knaben",
+            "instanceId": "dc9",
             "enabled": true,
             "options": {
-              "name": "Meteor",
+              "name": "Knaben",
               "timeout": 5000,
-              "resources": [
-                "stream"
-              ],
-              "includeP2P": true,
-              "removeTrash": false,
-              "useMultipleInstances": false,
-              "mediaTypes": []
-            },
-            "category": "Streams"
+              "mediaTypes": [],
+              "useMultipleInstances": false
+            }
           },
           {
-            "type": "comet",
-            "instanceId": "b0f",
+            "type": "the-pirate-bay",
+            "instanceId": "652",
             "enabled": true,
             "options": {
-              "name": "Comet",
+              "name": "The Pirate Bay",
               "timeout": 5000,
-              "resources": [
-                "stream"
-              ],
-              "includeP2P": true,
-              "removeTrash": false,
               "mediaTypes": [],
-              "url": ""
-            },
-            "category": "Streams"
+              "useMultipleInstances": false
+            }
           },
           {
-            "type": "hdhub",
-            "instanceId": "29a",
+            "type": "library",
+            "instanceId": "ae7",
             "enabled": true,
             "options": {
-              "name": "HdHub",
+              "name": "Library",
               "timeout": 5000,
               "resources": [
-                "stream"
+                "stream",
+                "catalog",
+                "meta"
               ],
               "mediaTypes": [],
-              "tb_only": false
-            },
-            "category": "Streams"
-          },
-          {
-            "type": "sootio",
-            "instanceId": "9d3",
-            "enabled": true,
-            "options": {
-              "name": "Sootio",
-              "timeout": 5000,
-              "resources": [
-                "stream"
+              "showRefreshActions": [
+                "catalog"
               ],
-              "httpProviders": [
-                "http4khdhub",
-                "httpHDHub4u",
-                "httpUHDMovies",
-                "httpMoviesDrive",
-                "httpMKVCinemas",
-                "httpMkvDrama",
-                "httpMalluMv",
-                "httpCineDoze",
-                "httpNetflixMirror",
-                "httpVixSrc"
-              ],
-              "mediaTypes": [],
-              "useMultipleInstances": false,
-              "url": "https://sooti.info"
-            },
-            "category": "Streams"
+              "skipProcessing": false,
+              "hideStreams": false,
+              "useMultipleInstances": false
+            }
           },
           {
             "type": "opensubtitles-v3-plus",
@@ -139,32 +318,14 @@
                 "ar"
               ],
               "sources": "all",
-              "includeAiTranslated": false,
-              "movieHashPlusAutoAdjustment": false
+              "includeAiTranslated": true,
+              "movieHashPlusAutoAdjustment": true
             },
-            "category": "SUBS"
-          },
-          {
-            "type": "subdl",
-            "instanceId": "4dd",
-            "enabled": true,
-            "options": {
-              "name": "SubDL",
-              "timeout": 7500,
-              "resources": [
-                "subtitles"
-              ],
-              "language": [
-                "AR"
-              ],
-              "hearingImpairment": "hiExclude",
-              "subDlApiKey": "<template_placeholder>"
-            },
-            "category": "SUBS"
+            "category": "Subs"
           },
           {
             "type": "subsource",
-            "instanceId": "3e8",
+            "instanceId": "52a",
             "enabled": true,
             "options": {
               "name": "SubSource",
@@ -184,168 +345,28 @@
               "hearingImpairment": "hiExclude",
               "subSourceApiKey": "<template_placeholder>"
             },
-            "category": "SUBS"
+            "category": "Subs"
           },
           {
-            "__if": "inputs.penguPlayUrl",
-            "type": "penguplay",
-            "instanceId": "13d",
+            "type": "subdl",
+            "instanceId": "bbd",
             "enabled": true,
             "options": {
-              "name": "PenguPlay",
-              "manifestUrl": "{{inputs.penguPlayUrl}}",
-              "timeout": 5000,
+              "name": "SubDL",
+              "timeout": 7500,
               "resources": [
-                "stream",
-                "subtitles",
-                "meta",
-                "catalog"
+                "subtitles"
               ],
-              "mediaTypes": []
+              "language": [
+                "AR"
+              ],
+              "hearingImpairment": "hiExclude",
+              "subDlApiKey": "<template_placeholder>"
             },
-            "category": "HTTP"
+            "category": "Subs"
           }
         ]
-      },
-      "default": [
-        {
-          "type": "torznab",
-          "instanceId": "6a6",
-          "enabled": true,
-          "options": {
-            "name": "ComeTorz",
-            "timeout": 5000,
-            "mediaTypes": [],
-            "searchMode": "auto",
-            "seasonEpisodeStrategy": "dynamic",
-            "paginate": false,
-            "useMultipleInstances": false,
-            "api": {
-              "url": "https://comet.feels.legal/torznab/api"
-            }
-          }
-        },
-        {
-          "type": "stremthruTorz",
-          "instanceId": "609",
-          "enabled": true,
-          "options": {
-            "name": "STorz",
-            "timeout": 5000,
-            "resources": [
-              "stream"
-            ],
-            "url": "",
-            "mediaTypes": [],
-            "includeP2P": false,
-            "useMultipleInstances": false
-          }
-        },
-        {
-          "type": "knaben",
-          "instanceId": "dc9",
-          "enabled": true,
-          "options": {
-            "name": "Knaben",
-            "timeout": 5000,
-            "mediaTypes": [],
-            "useMultipleInstances": false
-          }
-        },
-        {
-          "type": "the-pirate-bay",
-          "instanceId": "652",
-          "enabled": true,
-          "options": {
-            "name": "The Pirate Bay",
-            "timeout": 5000,
-            "mediaTypes": [],
-            "useMultipleInstances": false
-          }
-        },
-        {
-          "type": "library",
-          "instanceId": "ae7",
-          "enabled": true,
-          "options": {
-            "name": "Library",
-            "timeout": 5000,
-            "resources": [
-              "stream",
-              "catalog",
-              "meta"
-            ],
-            "mediaTypes": [],
-            "showRefreshActions": [
-              "catalog"
-            ],
-            "skipProcessing": false,
-            "hideStreams": false,
-            "useMultipleInstances": false
-          }
-        },
-        {
-          "type": "opensubtitles-v3-plus",
-          "instanceId": "262",
-          "enabled": true,
-          "options": {
-            "name": "OpenSubtitles V3+",
-            "timeout": 7500,
-            "resources": [
-              "subtitles"
-            ],
-            "language": [
-              "ar"
-            ],
-            "sources": "all",
-            "includeAiTranslated": true,
-            "movieHashPlusAutoAdjustment": true
-          },
-          "category": "Subs"
-        },
-        {
-          "type": "subsource",
-          "instanceId": "52a",
-          "enabled": true,
-          "options": {
-            "name": "SubSource",
-            "timeout": 7500,
-            "resources": [
-              "subtitles"
-            ],
-            "language": [
-              "Arabic"
-            ],
-            "subtitleTypes": [
-              1,
-              2,
-              3,
-              4
-            ],
-            "hearingImpairment": "hiExclude",
-            "subSourceApiKey": "<template_placeholder>"
-          },
-          "category": "Subs"
-        },
-        {
-          "type": "subdl",
-          "instanceId": "bbd",
-          "enabled": true,
-          "options": {
-            "name": "SubDL",
-            "timeout": 7500,
-            "resources": [
-              "subtitles"
-            ],
-            "language": [
-              "AR"
-            ],
-            "hearingImpairment": "hiExclude",
-            "subDlApiKey": "<template_placeholder>"
-          },
-          "category": "Subs"
-        }
-      ]
+      }
     },
     "formatter": {
       "id": "custom",
@@ -713,29 +734,32 @@
       "AAC"
     ],
     "catalogModifications": {
-      "__switch": "services",
-      "cases": {
-        "": []
-      },
-      "default": [
-        {
-          "id": "ae7791b.aiostreams::library.torbox",
-          "name": "TorBox",
-          "type": "library",
-          "enabled": false,
-          "shuffle": false,
-          "usePosterService": false,
-          "hideable": true,
-          "searchable": true,
-          "addonName": "Library",
-          "onlyOnDiscover": true
-        }
-      ]
+      "__if": "inputs.addonPreset == default",
+      "__value": {
+        "__switch": "services",
+        "cases": {
+          "": []
+        },
+        "default": [
+          {
+            "id": "ae7791b.aiostreams::library.torbox",
+            "name": "TorBox",
+            "type": "library",
+            "enabled": false,
+            "shuffle": false,
+            "usePosterService": false,
+            "hideable": true,
+            "searchable": true,
+            "addonName": "Library",
+            "onlyOnDiscover": true
+          }
+        ]
+      }
     },
     "appliedTemplates": [
       {
         "id": "aioar.complete",
-        "version": "1.1.0"
+        "version": "1.2.0"
       }
     ],
     "addonName": "AioAr",
@@ -1175,36 +1199,48 @@
       ]
     },
     "dynamicAddonFetching": {
-      "enabled": false,
-      "condition": ""
+      "__if": "inputs.addonPreset == default",
+      "__value": {
+        "enabled": false,
+        "condition": ""
+      }
     },
     "groups": {
-      "enabled": false
+      "__if": "inputs.addonPreset == default",
+      "__value": {
+        "enabled": false
+      }
     },
     "addonCategoryColors": {
-      "__switch": "services",
-      "cases": {
-        "": {
+      "__if": "inputs.addonPreset == default",
+      "__value": {
+        "__switch": "services",
+        "cases": {
+          "": {
+            "Mix": "indigo",
+            "Debrid": "emerald",
+            "Usenet": "lime",
+            "HTTP": "cyan",
+            "P2P": "orange",
+            "Subs": "purple",
+            "Streams": "blue",
+            "SUBS": "blue"
+          }
+        },
+        "default": {
           "Mix": "indigo",
           "Debrid": "emerald",
           "Usenet": "lime",
           "HTTP": "cyan",
           "P2P": "orange",
           "Subs": "purple",
-          "Streams": "blue",
-          "SUBS": "blue"
+          "Streams": "blue"
         }
-      },
-      "default": {
-        "Mix": "indigo",
-        "Debrid": "emerald",
-        "Usenet": "lime",
-        "HTTP": "cyan",
-        "P2P": "orange",
-        "Subs": "purple",
-        "Streams": "blue"
       }
     },
-    "mergedCatalogs": []
+    "mergedCatalogs": {
+      "__if": "inputs.addonPreset == default",
+      "__value": []
+    }
   }
 }
