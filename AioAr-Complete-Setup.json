@@ -20,30 +20,30 @@
       {
         "__if": "services",
         "id": "header.mode.debrid",
-        "name": "وضع Debrid وUsenet",
-        "description": "تم اختيار خدمة واحدة أو أكثر. سيستخدم القالب إعدادات Debrid وUsenet.",
+        "name": "وضع الاشتراكات",
+        "description": "تم اختيار إحدى الخدمات، لذلك سيتم استعمال قالب الاشتراكات",
         "type": "alert",
         "intent": "success"
       },
       {
         "__if": "!services",
         "id": "header.mode.p2p",
-        "name": "وضع P2P وHTTP",
-        "description": "لم يتم اختيار خدمة. سيستخدم القالب إعدادات التورنت ومصادر HTTP المباشرة.",
+        "name": "الوضع المجاني",
+        "description": "لم يتم اختيار أي خدمة، لذلك سيتم استخدام القالب المجاني",
         "type": "alert",
         "intent": "warning"
       },
       {
         "id": "header.options",
         "name": "خيارات القالب",
-        "description": "اختر طريقة عرض النتائج والإضافات والترتيب والسرعة المناسبة لك.",
+        "description": "اختر طريقة عرض النتائج والإضافات والترتيب والسرعة المناسبة لك",
         "type": "alert",
         "intent": "info"
       },
       {
         "id": "formatterChoice",
-        "name": "لغة وتنسيق النتائج",
-        "description": "اختر الفورماتر العربي أو الإنجليزي. اختر استخدام إعداداتك الحالية حتى لا يغيّر القالب الفورماتر الموجود لديك.",
+        "name": "لغة عرض النتائج (الفورماتر)",
+        "description": "اختر الفورماتر حسب تفضيلك بالعربي أو الإنجليزي أو حتى إبقاء الفورماتر الخاص بك",
         "type": "select",
         "required": true,
         "default": "english",
@@ -65,7 +65,7 @@
       {
         "id": "addonPreset",
         "name": "إعداد الإضافات",
-        "description": "الإعداد الموصى به يثبت إضافات القالب. اختر استخدام إضافاتك الحالية إذا كنت قد خصصتها ولا تريد استبدالها عند التحديث.",
+        "description": "الإعداد الموصى به يثبت إضافات القالب، اختر استخدام إضافاتك الحالية إذا كنت قد خصصتها ولا تريد استبدالها",
         "type": "select",
         "required": true,
         "default": "default",
@@ -83,18 +83,18 @@
       {
         "id": "subtitleAddons",
         "name": "إضافات الترجمة",
-        "description": "اختر نعم لإضافة OpenSubtitles وSubDL وSubSource، أو لا لعدم تحميل إضافات الترجمة.",
+        "description": "اختر نعم لإضافة أوبن سبتايتلز وسب دي إل وسب سورس، أو لا لعدم تحميل إضافات الترجمة",
         "type": "select",
         "required": true,
         "default": "yes",
         "options": [
           {
             "value": "yes",
-            "label": "نعم — أضف إضافات الترجمة"
+            "label": "نعم"
           },
           {
             "value": "no",
-            "label": "لا — لا تحمّل إضافات الترجمة"
+            "label": "لا"
           }
         ]
       },
@@ -102,7 +102,7 @@
         "__if": "services and inputs.addonPreset == default",
         "id": "penguPlayUrl",
         "name": "أضف إضافة بينقو بلاي (اختياري)",
-        "description": "أضف إضافة بينقو بلاي للاحتياط عند تعطل خدمة الديبرد. اترك الحقل فارغًا إذا كنت لا تريد إضافتها.",
+        "description": "أضف إضافة [بينقو بلاي](https://pengu.uk) للاحتياط عند تعطل خدمة الديبرد، واترك الحقل فارغًا إذا كنت لا تريد إضافتها",
         "type": "url",
         "required": false
       },
@@ -110,7 +110,7 @@
         "__if": "!services and inputs.addonPreset == default",
         "id": "penguPlayUrlNoDebrid",
         "name": "أضف إضافة بينقو بلاي (إجباري)",
-        "description": "لعدم توفر اشتراك ديبرد، يجب عليك تحميل إضافة بينقو بلاي.",
+        "description": "لعدم توفر اشتراك ديبرد، يجب عليك تحميل إضافة [بينقو بلاي](https://pengu.uk)",
         "type": "url",
         "required": true
       },
@@ -118,7 +118,7 @@
         "__if": "services.torbox",
         "id": "torboxTier",
         "name": "فئة اشتراك TorBox",
-        "description": "يضع حدًا لحجم التنزيلات غير المخزنة وفق فئة اشتراكك.",
+        "description": "يضع حدًا لحجم التنزيلات غير المخزنة وفق فئة اشتراكك",
         "type": "select",
         "required": true,
         "default": "nonPro",
@@ -136,7 +136,7 @@
       {
         "id": "coreFilter",
         "name": "محرك البحث: عدد النتائج",
-        "description": "عدد النتائج المحتفظ بها لكل دقة في اليوزنت والديبرد والتورنت وHTTP. القيمة الافتراضية ٣. أدخل صفر لتعطيله.",
+        "description": "القيمة الافتراضية هي ٣، وتعطي تقريبًا من ٣ إلى ٥ نتائج لكل دقة، أدخل صفر لتعطيله",
         "type": "number",
         "required": true,
         "default": 3
@@ -144,7 +144,7 @@
       {
         "id": "sortingOrder",
         "name": "أولوية ترتيب النتائج",
-        "description": "اختر أولوية ترتيب النتائج. مثلًا: هل تفضل ١٠٨٠ بلوراي ريموكس أو فوركي ويب ديل؟",
+        "description": "اختر أولوية ترتيب النتائج، هل تفضل الدقة، الجودة، أو لا تهمك الجودة والدقة وتفضل الترجمة؟",
         "type": "select",
         "required": true,
         "default": "resolution",
@@ -156,13 +156,17 @@
           {
             "value": "quality",
             "label": "الجودة أولًا"
+          },
+          {
+            "value": "subtitle",
+            "label": "الترجمة أولًا"
           }
         ]
       },
       {
         "id": "exitCondition",
-        "name": "سرعة شروط الخروج",
-        "description": "اختر بين الافتراضي للحصول على نتائج أكثر وأفضل على الأغلب، أو السريع للحصول على نتائج أقل عددًا ودقة.",
+        "name": "سرعة البحث عن النتائج",
+        "description": "اختر بين الافتراضي للحصول على نتائج أكثر وأفضل على الأغلب، أو السريع للحصول على نتائج أقل عددًا ودقةً على الأغلب",
         "type": "select",
         "required": true,
         "default": "default",
@@ -173,7 +177,7 @@
           },
           {
             "value": "fast",
-            "label": "السريع: نتائج أقل عددًا ودقة"
+            "label": "السريع: نتائج أقل عددًا ودقةً على الأغلب"
           }
         ]
       }
@@ -1318,6 +1322,131 @@
             ],
             "cachedMovies": []
           }
+        },
+        "subtitle": {
+          "__switch": "services",
+          "cases": {
+            "": {
+              "global": [
+                {
+                  "key": "subtitle",
+                  "direction": "desc"
+                },
+                {
+                  "key": "resolution",
+                  "direction": "desc"
+                },
+                {
+                  "key": "quality",
+                  "direction": "desc"
+                },
+                {
+                  "key": "streamExpressionScore",
+                  "direction": "desc"
+                },
+                {
+                  "key": "streamExpressionMatched",
+                  "direction": "desc"
+                },
+                {
+                  "key": "seeders",
+                  "direction": "desc"
+                },
+                {
+                  "key": "seadex",
+                  "direction": "desc"
+                }
+              ],
+              "series": [],
+              "anime": [],
+              "cached": [],
+              "cachedMovies": [],
+              "uncached": []
+            }
+          },
+          "default": {
+            "global": [
+              {
+                "key": "cached",
+                "direction": "desc"
+              }
+            ],
+            "series": [],
+            "anime": [],
+            "cached": [
+              {
+                "key": "subtitle",
+                "direction": "desc"
+              },
+              {
+                "key": "resolution",
+                "direction": "desc"
+              },
+              {
+                "key": "quality",
+                "direction": "desc"
+              },
+              {
+                "key": "streamExpressionMatched",
+                "direction": "desc"
+              },
+              {
+                "key": "streamExpressionScore",
+                "direction": "desc"
+              },
+              {
+                "key": "library",
+                "direction": "desc"
+              },
+              {
+                "key": "language",
+                "direction": "desc"
+              },
+              {
+                "key": "seadex",
+                "direction": "desc"
+              }
+            ],
+            "uncached": [
+              {
+                "key": "subtitle",
+                "direction": "desc"
+              },
+              {
+                "key": "resolution",
+                "direction": "desc"
+              },
+              {
+                "key": "quality",
+                "direction": "desc"
+              },
+              {
+                "key": "streamExpressionMatched",
+                "direction": "desc"
+              },
+              {
+                "key": "streamExpressionScore",
+                "direction": "desc"
+              },
+              {
+                "key": "seeders",
+                "direction": "desc"
+              },
+              {
+                "key": "age",
+                "direction": "asc"
+              },
+              {
+                "key": "seadex",
+                "direction": "desc"
+              },
+              {
+                "key": "language",
+                "direction": "desc"
+              }
+            ],
+            "cachedMovies": []
+          }
         }
       },
       "default": {
@@ -1636,6 +1765,7 @@
           "enabled": true
         }
       ]
-    }
+    },
+    "tvdbApiKey": "<optional_template_placeholder>"
   }
 }
