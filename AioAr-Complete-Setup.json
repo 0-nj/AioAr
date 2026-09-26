@@ -108,7 +108,7 @@
       },
       {
         "__if": "!services and inputs.addonPreset == default",
-        "id": "penguPlayUrl",
+        "id": "penguPlayUrlNoDebrid",
         "name": "أضف إضافة بينقو بلاي (إجباري)",
         "description": "لعدم توفر اشتراك ديبرد، يجب عليك تحميل إضافة بينقو بلاي.",
         "type": "url",
@@ -916,13 +916,13 @@
               "__if": "inputs.subtitleAddons == yes"
             },
             {
-              "__if": "inputs.penguPlayUrl",
+              "__if": "inputs.penguPlayUrlNoDebrid",
               "type": "penguplay",
               "instanceId": "13d",
               "enabled": true,
               "options": {
                 "name": "PenguPlay",
-                "manifestUrl": "{{inputs.penguPlayUrl}}",
+                "manifestUrl": "{{inputs.penguPlayUrlNoDebrid}}",
                 "timeout": 5000,
                 "resources": [
                   "stream",
